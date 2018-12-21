@@ -1,0 +1,31 @@
+.container-fluid {
+    width: 95em;
+}
+
+#title {
+    background-color: #663300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 5px;
+}
+
+#title-parent {
+    height: 12em;
+}
+
+#title-text {
+    font-size: 50px;
+
+}
+
+#card-header {
+    color: black;
+    background-color: #f2f2f2;
+}
+
+#form {
+    margin-bottom: 20px;
+    padding: 0;
+}
