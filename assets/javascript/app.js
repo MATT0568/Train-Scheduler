@@ -14,8 +14,9 @@ database.ref().on('child_added', function (snapshot) {
     var name = snapshot.val().name;
     var destination = snapshot.val().destination;
     var frequency = snapshot.val().frequency;
-    var minutesAway = snapshot.val().minutesAway;
-    var nextArrival = snapshot.val().nextArrival;
+    var firstTrain = snapshot.val().firstTrain;
+    var minutesAway = getMinutesAway(firstTrain, frequency);
+    var nextArrival = getNextArrival(firstTrain, frequency);
     $("#rows").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + nextArrival + "</td><td>" + minutesAway + "</td><tr>");
 });
 
@@ -27,15 +28,11 @@ $(document).ready(function () {
         var firstTrain = $("#first").val().trim();
         var frequency = $("#frequency").val().trim();
 
-        var minutesAway = getMinutesAway(firstTrain, frequency);
-        var nextArrival = getNextArrival(firstTrain, frequency);
-
         database.ref().push({
             name: name,
             destination: destination,
             frequency: frequency,
-            minutesAway: minutesAway,
-            nextArrival: nextArrival
+            firstTrain: firstTrain,
         });
     });
 });
